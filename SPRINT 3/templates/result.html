@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Depression Detection System</title>
+    <!-- Template Main CSS File -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            width: 80%;
+            animation: fadeIn 1s ease-in;
+        }
+
+        p {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        #hero h1 {
+            margin: 0 0 10px 0;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 56px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        #hero h2 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 56px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .suggestions {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 0, 0, 0.1);
+            border-radius: 8px;
+            color: #ff4c4c;
+        }
+
+        .suggestions h3 {
+            color: #ff4c4c;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .suggestions p {
+            font-size: 16px;
+            color: #ff4c4c;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            width: 3cm;
+            padding: 6px;
+            background: #ea6981;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .button-group button:hover {
+            background-color: #e43c5c;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="hero-container">
+            <div class="container">
+                <h2>Depression Detection Result</h2>
+                <p>The analysis result for your input text is: {{predicted_label}}</p>
+
+                <!-- Display the predicted result -->
+                <h1><strong>
+                    {% if predicted_label == 'Non Depressive' %}
+                        <span style="color: rgb(11, 198, 11);">No signs of depression</span>
+                    {% elif predicted_label == 'Depressive' %}
+                        <span style="color: red;">Signs of depression detected</span>
+                    {% endif %}
+                </strong></h1>
+
+                <!-- Suggestions if depression is detected -->
+                {% if predicted_label == 'Depressive' %}
+                <div class="suggestions">
+                    <h3>Helpful Resources</h3>
+                    <p>If you're struggling, consider reaching out to one of the following:</p>
+                    <ul>
+                        <li><strong>Suicide Prevention Helpline:</strong> 1-800-273-TALK (8255)</li>
+                        <li><strong>Mental Health Support:</strong> Text "HELLO" to 741741</li>
+                        <li><strong>Doctor Consultation Helpline:</strong> 1-800-662-HELP (4357)</li>
+                        <li><strong>Local Therapist:</strong> Visit <a href="https://www.psychologytoday.com" target="_blank">Psychology Today</a> to find a therapist near you.</li>
+                    </ul>
+                </div>
+                {% endif %}
+
+                <div class="button-group">
+                    <button type="button" onclick="window.location.href='/input'">Back</button>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+</body>
+
+</html>
